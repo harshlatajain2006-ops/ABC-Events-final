@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Acropolis Blockchain Club | Events</title>
+  <meta name="description" content="The official events portal for the Acropolis Blockchain Club — explore upcoming workshops, hackathons, webinars, and community meetups." />
+  <meta name="keywords"    content="blockchain, web3, solidity, ethereum, defi, nft, hackathon, student club, acropolis, indore" />
+  <meta name="author"      content="Acropolis Blockchain Club" />
+  <meta name="theme-color" content="#00ddb4" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Acropolis Blockchain Club | Events" />
+  <meta property="og:description" content="Workshops, hackathons, webinars and meetups — all in one place. Join the ABC community and build the decentralized web." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://acropolis.in/events" />
+  <meta property="og:image"       content="/assets/og-cover.png" />
+  <meta property="og:image:alt"   content="Acropolis Blockchain Club events portal" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@AcropolisABC" />
+  <meta name="twitter:title"       content="Acropolis Blockchain Club | Events" />
+  <meta name="twitter:description" content="Workshops, hackathons, webinars and meetups — join the ABC community." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════════ */
+    :root {
+      --bg:          #04080f;
+      --bg2:         #080f1a;
+      --card:        #0d1626;
+      --border:      rgba(255,255,255,0.07);
+      --teal:        #00ddb4;
+      --teal-dim:    #00a88a;
+      --teal-bright: #5ffce0;
+      --blue:        #0099ff;
+      --purple:      #7b5ea7;
+      --orange:      #ff7b3a;
+      --text:        #f0f4f8;
+      --muted:       #7a8fa8;
+      --subtle:      rgba(240,244,248,0.05);
+      --font-d:      'Syne', sans-serif;
+      --font-b:      'DM Sans', sans-serif;
+      --ease:        cubic-bezier(.22,1,.36,1);
+    }
+
+    /* ══════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button,input{font-family:inherit}
+    ::selection{background:var(--teal);color:var(--bg)}
+    :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--card);border-radius:99px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--teal-dim)}
+    *{scrollbar-width:thin;scrollbar-color:var(--card) var(--bg)}
+
+    /* grain */
+    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity:.28}
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 clamp(1rem,4vw,2.5rem);
+      display:flex;align-items:center;justify-content:space-between;
+      background:rgba(4,8,15,.82);backdrop-filter:blur(20px) saturate(160%);
+      -webkit-backdrop-filter:blur(20px) saturate(160%);
+      border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    .navbar.scrolled{box-shadow:0 4px 40px rgba(0,221,180,.07)}
+
+    .nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+    .nav-logo-badge{width:38px;height:38px;background:linear-gradient(135deg,rgba(0,221,180,.15),rgba(0,153,255,.1));
+      border:1px solid rgba(0,221,180,.28);border-radius:10px;display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-d);font-weight:800;font-size:11px;letter-spacing:.04em;color:var(--teal)}
+    .nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .nav-logo-title{font-family:var(--font-d);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+    .nav-logo-sub{font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal)}
+
+    .nav-links{display:flex;align-items:center;gap:2rem}
+    .nav-links a{font-size:13.5px;font-weight:500;color:var(--muted);position:relative;transition:color .2s}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--teal);
+      border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--bg);
+      padding:8px 20px;border-radius:99px;font-size:13px;font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 0 18px rgba(0,221,180,.3);transition:background .2s,transform .15s,box-shadow .2s}
+    .btn-primary:hover{background:var(--teal-bright);transform:translateY(-1px);box-shadow:0 0 28px rgba(0,221,180,.5)}
+    .btn-primary:active{transform:translateY(0)}
+
+    .btn-ghost{display:inline-flex;align-items:center;gap:6px;background:var(--subtle);color:var(--text);
+      padding:8px 20px;border-radius:99px;font-size:13px;font-weight:600;
+      border:1px solid var(--border);cursor:pointer;transition:background .2s,transform .15s,border-color .2s}
+    .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);transform:translateY(-1px)}
+
+    /* hamburger */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;
+      transition:transform .28s var(--ease),opacity .28s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .mobile-menu{position:fixed;top:64px;left:0;right:0;z-index:99;
+      background:rgba(4,8,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);
+      padding:1.25rem clamp(1rem,4vw,2rem);display:none;flex-direction:column;gap:.4rem;
+      transform:translateY(-6px);opacity:0;transition:transform .22s var(--ease),opacity .22s;pointer-events:none}
+    .mobile-menu.open{display:flex;transform:translateY(0);opacity:1;pointer-events:all}
+    .mobile-menu a{padding:.65rem 0;font-size:15px;font-weight:500;color:var(--muted);
+      border-bottom:1px solid var(--border);transition:color .2s}
+    .mobile-menu a:last-child{border-bottom:none}
+    .mobile-menu a:hover{color:var(--teal)}
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero{position:relative;padding:140px clamp(1rem,5vw,2.5rem) 100px;text-align:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;
+      background-image:linear-gradient(rgba(0,221,180,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,221,180,.03) 1px,transparent 1px);
+      background-size:60px 60px;
+      mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 30%,transparent 80%)}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px)}
+    .hero-orb-1{width:700px;height:600px;background:radial-gradient(circle,rgba(0,221,180,.16) 0%,transparent 70%);
+      top:-200px;left:50%;transform:translateX(-50%);animation:floatC 10s ease-in-out infinite}
+    .hero-orb-2{width:420px;height:420px;background:radial-gradient(circle,rgba(0,153,255,.1) 0%,transparent 70%);
+      top:60px;right:-80px;animation:floatA 7s ease-in-out infinite}
+    .hero-orb-3{width:360px;height:360px;background:radial-gradient(circle,rgba(123,94,167,.1) 0%,transparent 70%);
+      bottom:-40px;left:-60px;animation:floatB 9s ease-in-out infinite}
+    @keyframes floatC{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-28px)}}
+    @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+    @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+
+    .hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;
+      background:rgba(0,221,180,.08);border:1px solid rgba(0,221,180,.2);border-radius:99px;
+      padding:6px 16px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      color:var(--teal);margin-bottom:1.5rem;animation:fadeUp .55s var(--ease) both}
+    .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulseDot 2.2s ease-in-out infinite}
+    @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+
+    .hero-title{font-family:var(--font-d);font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;
+      line-height:1.06;letter-spacing:-.025em;margin-bottom:1.4rem;animation:fadeUp .55s .1s var(--ease) both}
+    .hero-title .grad{background:linear-gradient(100deg,var(--teal) 0%,var(--blue) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    .hero-desc{font-size:clamp(1rem,2vw,1.12rem);color:var(--muted);max-width:540px;margin:0 auto 2.5rem;
+      font-weight:300;line-height:1.8;animation:fadeUp .55s .2s var(--ease) both}
+
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+      animation:fadeUp .55s .3s var(--ease) both}
+
+    .hero-stats{display:flex;align-items:center;justify-content:center;gap:clamp(1.5rem,4vw,3rem);
+      flex-wrap:wrap;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);
+      animation:fadeUp .55s .45s var(--ease) both}
+    .stat-item{text-align:center}
+    .stat-num{font-family:var(--font-d);font-size:2.1rem;font-weight:800;display:block;line-height:1;
+      background:linear-gradient(135deg,var(--teal),var(--teal-bright));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:5px}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ══════════════════════════════════════════
+       EVENTS
+    ══════════════════════════════════════════ */
+    .events-section{padding:80px clamp(1rem,5vw,2.5rem) 100px;max-width:1280px;margin:0 auto;position:relative;z-index:1}
+
+    .section-header{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:4rem}
+    @media(min-width:640px){.section-header{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+    .section-title{font-family:var(--font-d);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+
+    .search-wrap{position:relative}
+    .search-input{width:100%;max-width:320px;background:var(--card);border:1px solid var(--border);
+      border-radius:99px;padding:10px 18px 10px 40px;font-size:13.5px;color:var(--text);outline:none;
+      transition:border-color .2s,box-shadow .2s}
+    .search-input::placeholder{color:var(--muted)}
+    .search-input:focus{border-color:var(--teal-dim);box-shadow:0 0 0 3px rgba(0,221,180,.1)}
+    .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none}
+
+    .sub-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+    .sub-header h3{font-family:var(--font-d);font-size:1.15rem;font-weight:700;white-space:nowrap}
+    .sub-divider{flex:1;height:1px;background:var(--border)}
+    .sub-count{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+      background:var(--card);border:1px solid var(--border);padding:3px 10px;border-radius:99px}
+
+    .events-group{margin-bottom:5rem}
+    .events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1.5rem}
+
+    /* ── Card ── */
+    .event-card{background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;
+      display:flex;flex-direction:column;cursor:pointer;position:relative;
+      transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+    .event-card::before{content:'';position:absolute;inset:0;border-radius:inherit;
+      background:linear-gradient(135deg,rgba(0,221,180,.04) 0%,transparent 50%);
+      opacity:0;transition:opacity .3s;pointer-events:none}
+    .event-card:hover{transform:translateY(-6px);border-color:rgba(0,221,180,.2);
+      box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(0,221,180,.15)}
+    .event-card:hover::before{opacity:1}
+    .event-card:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+    .card-banner{width:100%;aspect-ratio:16/8;position:relative;overflow:hidden;background:var(--bg2)}
+    .card-banner-img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .event-card:hover .card-banner-img{transform:scale(1.05)}
+    .card-banner-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .banner-icon{font-size:3rem;opacity:.18}
+    .card-banner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,22,38,.9))}
+
+    .banner-teal  {background:linear-gradient(135deg,#052822,#081e2e)}
+    .banner-blue  {background:linear-gradient(135deg,#040d20,#061525)}
+    .banner-purple{background:linear-gradient(135deg,#0d0618,#130a22)}
+    .banner-orange{background:linear-gradient(135deg,#1a0d05,#1f1108)}
+
+    .card-category{position:absolute;top:14px;left:14px;padding:4px 12px;border-radius:99px;
+      font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}
+    .card-status{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.6);color:var(--muted);
+      padding:4px 10px;border-radius:99px;font-size:10px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;backdrop-filter:blur(8px)}
+    .card-status.soon{color:var(--teal-bright);background:rgba(0,221,180,.12)}
+
+    .theme-teal  {background:rgba(0,221,180,.12);color:var(--teal)}
+    .theme-blue  {background:rgba(0,153,255,.12);color:var(--blue)}
+    .theme-purple{background:rgba(123,94,167,.15);color:#b48af7}
+    .theme-orange{background:rgba(255,123,58,.12);color:var(--orange)}
+
+    .card-body{padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+    .card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem .7rem}
+    .card-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}
+    .card-meta-item i{font-size:11px}
+    .card-title{font-family:var(--font-d);font-size:1.08rem;font-weight:700;line-height:1.25;
+      letter-spacing:-.01em;transition:color .2s}
+    .event-card:hover .card-title{color:var(--teal-bright)}
+    .card-desc{font-size:13px;color:var(--muted);line-height:1.65;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+    .card-footer{display:flex;align-items:center;justify-content:space-between;
+      padding:1rem 1.5rem;border-top:1px solid var(--border);gap:.75rem;flex-wrap:wrap}
+    .card-tags{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+    .card-tag{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:99px;letter-spacing:.04em}
+
+    .card-cta{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;
+      padding:7px 16px;border-radius:99px;border:none;cursor:pointer;white-space:nowrap;
+      transition:background .2s,box-shadow .2s,transform .15s,color .2s,border-color .2s}
+    .card-cta-primary{background:var(--teal);color:var(--bg);box-shadow:0 0 14px rgba(0,221,180,.25)}
+    .card-cta-primary:hover{background:var(--teal-bright);box-shadow:0 0 22px rgba(0,221,180,.45);transform:translateY(-1px)}
+    .card-cta-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+    .card-cta-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+
+    /* empty */
+    .empty-state{text-align:center;padding:3.5rem 2rem;background:var(--card);border-radius:24px;border:1px dashed var(--border)}
+    .empty-icon{font-size:2rem;color:var(--muted);margin-bottom:.75rem}
+    .empty-title{font-family:var(--font-d);font-weight:700;font-size:1.1rem;margin-bottom:.4rem}
+    .empty-desc{font-size:13px;color:var(--muted)}
+    .hidden{display:none!important}
+
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem clamp(1rem,5vw,2.5rem) 2.5rem;position:relative;z-index:1}
+    .footer-inner{max-width:1280px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:3rem}
+    @media(min-width:640px){.footer-top{grid-template-columns:1.6fr 1fr 1fr}}
+    .footer-brand{display:flex;flex-direction:column;gap:1rem}
+    .footer-logo{display:flex;align-items:center;gap:10px}
+    .footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:280px}
+    .footer-col h4{font-family:var(--font-d);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .footer-col li a{font-size:13px;color:var(--muted);transition:color .2s}
+    .footer-col li a:hover{color:var(--teal)}
+    .footer-social{display:flex;gap:.6rem;margin-top:.75rem}
+    .social-btn{width:34px;height:34px;border-radius:10px;background:var(--subtle);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);cursor:pointer;
+      transition:background .2s,color .2s,border-color .2s;text-decoration:none}
+    .social-btn:hover{background:rgba(0,221,180,.1);color:var(--teal);border-color:rgba(0,221,180,.2)}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--border);
+      display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center}
+    @media(min-width:640px){.footer-bottom{flex-direction:row;justify-content:space-between;text-align:left}}
+    .footer-copy{font-size:12px;color:var(--muted)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:12px;color:var(--muted);transition:color .2s}
+    .footer-legal a:hover{color:var(--teal)}
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media(max-width:640px){.nav-links{display:none}.hamburger{display:flex}.hero-stats{gap:1.5rem}}
+    @media(min-width:641px){.hamburger{display:none}.mobile-menu{display:none!important}}
+    @media print{.navbar,.hero-bg,.hamburger,.mobile-menu,footer{display:none!important}
+      body{background:#fff;color:#000}.event-card{border:1px solid #ccc;box-shadow:none}}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Acropolis Blockchain Club home">
+    <div class="nav-logo-badge">ABC</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-title">Acropolis</span>
+      <span class="nav-logo-sub">Blockchain Club</span>
+    </div>
+  </a>
+  <div class="nav-links" role="menubar">
+    <a href="#" role="menuitem">Home</a>
+    <a href="#events" role="menuitem">Events</a>
+    <a href="#" role="menuitem">Team</a>
+    <button class="btn-primary" aria-label="Join the club">Join Us</button>
+  </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="menu">
+  <a href="#" role="menuitem">Home</a>
+  <a href="#events" role="menuitem">Events</a>
+  <a href="#" role="menuitem">Team</a>
+  <a href="#" role="menuitem" style="color:var(--teal);font-weight:700;">Join Us →</a>
+</div>
+
+<main>
+  <!-- ══ HERO ═══════════════════════════════════════════════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span> Student-run · Est. 2022</div>
+      <h1 class="hero-title" id="hero-heading">
+        Building the<br><span class="grad">Future of Web3</span>
+      </h1>
+      <p class="hero-desc">
+        Join the Acropolis Blockchain Club — explore DeFi, build dApps, compete in hackathons,
+        and connect with a community shaping the decentralized web.
+      </p>
+      <div class="hero-actions">
+        <a href="#events" class="btn-primary"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Explore Events</a>
+        <a href="#" class="btn-ghost"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Learn More</a>
+      </div>
+      <div class="hero-stats" role="list" aria-label="Club statistics">
+        <div class="stat-item" role="listitem"><span class="stat-num">200+</span><span class="stat-label">Members</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-num">40+</span><span class="stat-label">Events Hosted</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-num">12+</span><span class="stat-label">Projects Built</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-num">8</span><span class="stat-label">Awards Won</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EVENTS ═════════════════════════════════════════════ -->
+  <section id="events" class="events-section" aria-labelledby="events-heading">
+    <div class="section-header">
+      <div>
+        <p class="section-label">What's Happening</p>
+        <h2 class="section-title" id="events-heading">Our <span style="color:var(--teal)">Events</span></h2>
+      </div>
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input type="search" id="eventSearch" class="search-input"
+          placeholder="Search events…" aria-label="Search events" autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="events-group reveal">
+      <div class="sub-header">
+        <h3>Upcoming Events</h3><div class="sub-divider"></div>
+        <span class="sub-count" id="upcomingCount">0</span>
+      </div>
+      <div id="upcomingEventsGrid" class="events-grid" role="list" aria-live="polite"></div>
+      <div id="noUpcomingEvents" class="empty-state hidden" role="status">
+        <div class="empty-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></div>
+        <p class="empty-title">No upcoming events yet</p>
+        <p class="empty-desc">New events are being planned — check back soon!</p>
+      </div>
+    </div>
+
+    <div class="events-group reveal">
+      <div class="sub-header">
+        <h3>Past Events</h3><div class="sub-divider"></div>
+        <span class="sub-count" id="pastCount">0</span>
+      </div>
+      <div id="pastEventsGrid" class="events-grid" role="list" aria-live="polite"></div>
+      <div id="noPastEvents" class="empty-state hidden" role="status">
+        <div class="empty-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></div>
+        <p class="empty-title">No past events found</p>
+        <p class="empty-desc">Try a different search term.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="nav-logo-badge">ABC</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-title">Acropolis</span>
+            <span class="nav-logo-sub">Blockchain Club</span>
+          </div>
+        </div>
+        <p class="footer-desc">Empowering students with blockchain knowledge and practical skills to build the decentralized web.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Sponsors</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Acropolis Blockchain Club. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ SCRIPT ═════════════════════════════════════════════ -->
+<script>
+const EVENTS=[
+  /* Upcoming */
+  {id:'u1',title:'Solidity Bootcamp: Build Your First dApp',date:'April 12, 2026',time:'10:00 AM – 1:00 PM',location:'Lab 204, CSE Department',
+   description:'Hands-on: write, test and deploy your first Ethereum smart contract using Solidity and Hardhat.',
+   image:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
+   category:'Workshop',theme:'teal',icon:'fa-code',tags:['Solidity','Ethereum','Hands-on'],status:'Upcoming',sortDate:'2026-04-12'},
+  {id:'u2',title:'Web3 Hackathon 2026',date:'May 3–4, 2026',time:'9:00 AM · 48 hrs',location:'Seminar Hall A',
+   description:'48-hour hackathon — build innovative DeFi, NFT, or GameFi projects. Prizes worth ₹50,000!',
+   image:'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800',
+   category:'Hackathon',theme:'orange',icon:'fa-trophy',tags:['DeFi','NFT','Compete'],status:'Upcoming',sortDate:'2026-05-03'},
+  {id:'u3',title:'DeFi Deep Dive: Protocols & Yield',date:'June 18, 2026',time:'3:00 PM',location:'Online · Zoom',
+   description:'Industry experts break down the DeFi ecosystem — AMMs, liquidity pools, and yield farming strategies.',
+   image:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800',
+   category:'Talk',theme:'blue',icon:'fa-chart-line',tags:['DeFi','Finance','Talk'],status:'Upcoming',sortDate:'2026-06-18'},
+  /* Past */
+  {id:'p1',title:'Mastering Job Hunts During Recession',date:'February 20, 2024',time:'2:00 PM – 3:30 PM',location:'Lab 116, CSE Department',
+   description:'Insider tips, strategies, and a roadmap to land high-paying roles even when the market is tight.',
+   image:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=800',
+   category:'Seminar',theme:'blue',icon:'fa-briefcase',tags:['Career','Growth'],status:'Past',sortDate:'2024-02-20'},
+  {id:'p2',title:'Blockchain Event Winners Announcement',date:'November 4, 2023',time:'N/A',location:'Acropolis Campus',
+   description:'Celebrating the brilliant minds and winners of our recent blockchain competition.',
+   image:'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
+   category:'Meetup',theme:'teal',icon:'fa-trophy',tags:['Awards','Community'],status:'Past',sortDate:'2023-11-04'},
+  {id:'p3',title:'Community Interactions Session',date:'October 11, 2023',time:'N/A',location:'Acropolis Campus',
+   description:'A vibrant session focused on community interactions, networking, and sharing blockchain insights.',
+   image:'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800',
+   category:'Meetup',theme:'teal',icon:'fa-users',tags:['Networking','Community'],status:'Past',sortDate:'2023-10-11'},
+  {id:'p4',title:'Code Block: Blockchain Journey',date:'March 27, 2023',time:'10:30 AM – 1:30 PM',location:'Lab 121, CSE Department',
+   description:'Build your own dApp, NFT, and Smart Contracts with Mr. Uttam Singh from Flare Network.',
+   image:'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+   category:'Workshop',theme:'orange',icon:'fa-code',tags:['Solidity','NFT','Hands-on'],status:'Past',sortDate:'2023-03-27'},
+  {id:'p5',title:'Private & Public Blockchain Use Cases',date:'March 10, 2023',time:'7:00 PM',location:'Virtual · Microsoft Teams',
+   description:'Valuable insights on industry trends and real-world applications of private and public blockchains.',
+   image:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800',
+   category:'Webinar',theme:'purple',icon:'fa-globe',tags:['Industry','Use Cases'],status:'Past',sortDate:'2023-03-10'},
+  {id:'p6',title:'Beginners Guide to LinkedIn',date:'January 17, 2023',time:'8:00 PM – 9:00 PM',location:'Virtual · Google Meet',
+   description:"ABC's very first event — LinkedIn profile building, networking basics, and personal branding.",
+   image:'https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80&w=800',
+   category:'Webinar',theme:'blue',icon:'fa-linkedin',tags:['LinkedIn','Beginner'],status:'Past',sortDate:'2023-01-17'},
+];
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function daysUntil(d){return Math.ceil((new Date(d+'T00:00:00')-Date.now())/86400000)}
+function cd(days){if(days===0)return'Today!';if(days===1)return'Tomorrow';if(days>0)return`In ${days} days`;return null}
+
+function buildCard(ev){
+  const isPast=ev.status==='Past';
+  const days=daysUntil(ev.sortDate);
+  const label=!isPast?cd(days):null;
+  const statusChip=isPast
+    ?`<span class="card-status">Completed</span>`
+    :label?`<span class="card-status soon">${esc(label)}</span>`:'';
+  const banner=ev.image
+    ?`<img src="${esc(ev.image)}" alt="${esc(ev.title)}" class="card-banner-img" loading="lazy" decoding="async"/>`
+    :`<div class="card-banner-placeholder"><i class="fa-solid ${esc(ev.icon||'fa-calendar')} banner-icon theme-${esc(ev.theme)}" aria-hidden="true"></i></div>`;
+  const tags=(ev.tags||[]).map(t=>`<span class="card-tag theme-${esc(ev.theme)}">${esc(t)}</span>`).join('');
+  const cta=isPast
+    ?`<button class="card-cta card-cta-ghost" aria-label="View recap of ${esc(ev.title)}"><i class="fa-solid fa-eye" aria-hidden="true"></i> Recap</button>`
+    :`<button class="card-cta card-cta-primary" aria-label="Register for ${esc(ev.title)}"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Register</button>`;
+  const timeMeta=(ev.time&&ev.time!=='N/A')
+    ?`<span class="card-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i>${esc(ev.time)}</span>`:'';
+  return`<article class="event-card" role="listitem" tabindex="0" aria-label="${esc(ev.title)}">
+    <div class="card-banner ${ev.image?'':'banner-'+esc(ev.theme)}">
+      ${banner}<div class="card-banner-overlay" aria-hidden="true"></div>
+      <span class="card-category theme-${esc(ev.theme)}">${esc(ev.category)}</span>${statusChip}
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="card-meta-item"><i class="fa-regular fa-calendar" aria-hidden="true"></i><time datetime="${esc(ev.sortDate)}">${esc(ev.date)}</time></span>
+        ${timeMeta}
+        <span class="card-meta-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>${esc(ev.location)}</span>
+      </div>
+      <h4 class="card-title">${esc(ev.title)}</h4>
+      <p class="card-desc">${esc(ev.description)}</p>
+    </div>
+    <div class="card-footer"><div class="card-tags">${tags}</div>${cta}</div>
+  </article>`;
+}
+
+function render(q=''){
+  q=q.toLowerCase().trim();
+  const hit=ev=>!q||[ev.title,ev.category,ev.location,ev.description,...(ev.tags||[])].some(s=>s.toLowerCase().includes(q));
+  const up=EVENTS.filter(e=>e.status==='Upcoming'&&hit(e)).sort((a,b)=>new Date(a.sortDate)-new Date(b.sortDate));
+  const pa=EVENTS.filter(e=>e.status==='Past'&&hit(e)).sort((a,b)=>new Date(b.sortDate)-new Date(a.sortDate));
+  document.getElementById('upcomingEventsGrid').innerHTML=up.map(buildCard).join('');
+  document.getElementById('pastEventsGrid').innerHTML=pa.map(buildCard).join('');
+  document.getElementById('upcomingCount').textContent=up.length;
+  document.getElementById('pastCount').textContent=pa.length;
+  document.getElementById('noUpcomingEvents').classList.toggle('hidden',up.length>0);
+  document.getElementById('noPastEvents').classList.toggle('hidden',pa.length>0);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  render();
+
+  let t;
+  document.getElementById('eventSearch').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>render(e.target.value),220)});
+
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+  const btn=document.getElementById('hamburgerBtn');
+  const menu=document.getElementById('mobileMenu');
+  btn.addEventListener('click',()=>{const o=menu.classList.toggle('open');btn.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{
+    if(menu.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target)){
+      menu.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');
+    }
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&menu.classList.contains('open')){
+      menu.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus();
+    }
+  });
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((en,i)=>{if(en.isIntersecting){en.target.style.transitionDelay=`${i*0.08}s`;en.target.classList.add('visible');obs.unobserve(en.target)}});
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

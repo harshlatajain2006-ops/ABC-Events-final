@@ -1,0 +1,40 @@
+{
+  "name": "Acropolis Blockchain Club",
+  "short_name": "ABC Events",
+  "version": "1.0.0",
+  "description": "The official events portal for the Acropolis Blockchain Club — explore upcoming workshops, hackathons, webinars, and community meetups.",
+  "keywords": [
+    "blockchain",
+    "web3",
+    "solidity",
+    "ethereum",
+    "defi",
+    "nft",
+    "hackathon",
+    "student club",
+    "acropolis",
+    "indore"
+  ],
+  "author": {
+    "name": "Acropolis Blockchain Club",
+    "email": "abc@acropolis.in",
+    "url": "https://acropolis.in"
+  },
+  "lang": "en",
+  "theme_color": "#00ddb4",
+  "background_color": "#04080f",
+  "og": {
+    "title": "Acropolis Blockchain Club | Events",
+    "description": "Workshops, hackathons, webinars & meetups — all in one place. Join the ABC community and build the decentralized web.",
+    "type": "website",
+    "image": "/assets/og-cover.png",
+    "image_alt": "Acropolis Blockchain Club events portal",
+    "url": "https://acropolis.in/events"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@AcropolisABC",
+    "creator": "@AcropolisABC"
+  },
+  "requestFramePermissions": []
+}
